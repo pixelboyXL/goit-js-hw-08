@@ -21,12 +21,19 @@ function onInputChange(evt) {
 
 function onFormSubmit(evt) {
     evt.preventDefault();
+    if (!email.value || !message.value) {
+        return alert("You can`t submit empty form");
+    }
     evt.target.reset();
     localStorage.removeItem(STORAGE_KEY);
     console.log(formData);
+    formData.email = '';
+    formData.message = '';
 }
 
 function getLocaleStorage() {
-    parsedValue.email === undefined ? email.value = "" : email.value = parsedValue.email;
-    parsedValue.message === undefined ? message.value = "" : message.value = parsedValue.message;
+    if (savedValue) {
+        parsedValue.email === undefined ? email.value = "" : email.value = parsedValue.email;
+        parsedValue.message === undefined ? message.value = "" : message.value = parsedValue.message;
+    }
 }
